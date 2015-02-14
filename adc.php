@@ -44,11 +44,14 @@ if(isset($_POST['domain']))
 		$custom_found_result_text = __('Congratulations! <b>'.$domain.'</b> is available!', 'wdc');
     	$custom_not_found_result_text = __('Sorry! <b>'.$domain.'</b> is already taken!', 'wdc');
 		
-		if ($available) {
+		if ($available == '1') {
 				$result = array('status'=>1,'domain'=>$domain, 'text'=> '<p class="available">'.$custom_found_result_text.'</p>');
 		    	echo json_encode($result);
-		} else {
+		} elseif ($available == '0') {
 				$result = array('status'=>0,'domain'=>$domain, 'text'=> '<p class="not-available">'.$custom_not_found_result_text.'</p>');
+		    	echo json_encode($result);
+		}elseif ($available == '2'){
+				$result = array('status'=>0,'domain'=>$domain, 'text'=> '<p class="not-available">WHOIS server not found for that TLD</p>');
 		    	echo json_encode($result);
 		}
 		
@@ -90,16 +93,16 @@ function wdc_display_shortcode($atts){
 			'button' => 'Check'
 		), $atts );
 
-?>
-<div id="domain-form">
+$content = '<div id="domain-form">
 	<form method="post" action="./" id="form" class="pure-form"> 
-		<input type="text" autocomplete="off" id="Search" name="domain" class="" style="width:100%;max-width:<?php echo $atts['width'];?>px;"> 
-		<input type="submit" id="Submit" value="<?php echo $atts['button'];?>" class="pure-button button-blue">
-		<p><div id="loading"><img src="<?php echo $image; ?>"></img></div></p>
+		<input type="text" autocomplete="off" id="Search" name="domain" class="" style="width:100%;max-width:'.$atts['width'].'px;"> 
+		<input type="submit" id="Submit" value="'.$atts['button'].'" class="pure-button button-blue">
+		<p><div id="loading"><img src="'.$image.'"></img></div></p>
 	</form>
 		<p><div id="results" class="result"></div></p>
-</div>	
- <?php
+</div>';
+
+return $content;
 
 }
 

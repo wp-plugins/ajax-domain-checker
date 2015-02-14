@@ -160,7 +160,7 @@ class DomainAvailability {
 			"engineering" => array("whois.donuts.co","Domain not found."),
 			"enterprises" => array("whois.donuts.co","Domain not found."),
 			"equipment" => array("whois.donuts.co","Domain not found."),
-			"es" => array("whois.nic.es","MATCH"), //  You need your IP to be whitelisted, read more: https://sede.red.gob.es/eRegistro/inicio.action
+			//"es" => array("whois.nic.es","MATCH"), //  You need your IP to be whitelisted, read more: https://sede.red.gob.es/eRegistro/inicio.action
 			"estate" => array("whois.donuts.co","Domain not found."),
 			"eu" => array("whois.eu","Status: AVAILABLE"),
 			"eus" => array("whois.eus.coreregistry.net","no matching objects found"),
@@ -189,7 +189,7 @@ class DomainAvailability {
 			"gl" => array("whois.nic.gl","Domain Status: No Object Found"),
 			"glass" => array("whois.donuts.co","Domain not found."),
 			"gop" => array("whois-cl01.mm-registry.com","Status: Not Registered"),
-			"gov" => array("whois.dotgov.gov","MATCH"), // not responding, awaiting answer from registrar: http://i.gyazo.com/5318b9ed2ba6452c3688ecc666126f63.png
+			"gov" => array("whois.nic.gov","No match for"),
 			"graphics" => array("whois.donuts.co","Domain not found."),
 			"gripe" => array("whois.donuts.co","Domain not found."),
 			"gs" => array("whois.nic.gs","Domain Status: No Object Found"),
@@ -276,7 +276,7 @@ class DomainAvailability {
 			"nl" => array("whois.domain-registry.nl","is free"),
 			"no" => array("whois.norid.no","% No match"),
 			"nu" => array("whois.iis.nu","not found."),
-			"nz" => array("whois.srs.net.nz","query_status: 260 Will be Available"),
+			"nz" => array("whois.srs.net.nz","220 Available"),
 			"om" => array("whois.registry.om","No Data Found"),
 			"onl" => array("whois.afilias-srs.net","NOT FOUND"),
 			"paris" => array("whois-paris.nic.fr","Requested Domain cannot be found"),
@@ -408,7 +408,33 @@ class DomainAvailability {
 			"yt" => array("whois.nic.yt","No entries found in the AFNIC Database."),
 			"ryukyu" => array("whois.nic.ryukyu", "DOMAIN NOT FOUND"),
 			"zm" => array("whois.nic.zm","Domain Status: No Object Found"),
-			"zone" => array( "whois.donuts.co","Domain not found.")
+			"zone" => array( "whois.donuts.co","Domain not found."),
+			"scot" => array("whois.nic.scot","no matching objects found"),
+			"br" => array("whois.nic.br","No match for"),
+			"engineer" => array("whois.nic.engineer","Domain not found"),
+			"gifts" => array("whois.nic.gifts","Domain not found"),
+			"quebec" => array("whois.nic.quebec","no matching objects found"),
+			"restaurant" => array("whois.nic.restaurant","Domain not found"),
+			"sarl" => array("whois.nic.sarl","Domain not found"),
+			"click" => array("whois.nic.click","is available for registration"),
+			"host" => array("whois.nic.host","DOMAIN NOT FOUND"),
+			"hosting" => array("whois.nic.hosting","is available for registration"),
+			"trade" => array("whois.nic.trade","Not found"),
+			"career" => array("whois.nic.career|No match for"),
+			"diet" => array("whois.nic.diet","is available for registration"),
+			"help" => array("whois.nic.help","is available for registration"),
+			"jobs" => array("jobswhois.verisign-grs.com","No match for"),
+			"property" => array("whois.nic.property","is available for registration"),
+			"beer" => array("whois.nic.beer","Not Registered"),
+			"direct" => array("whois.nic.direct","Domain not found"),
+			"place" => array("whois.nic.place","Domain not found"),
+			"surf" => array("whois.nic.surf","Not Registered"),
+			"healthcare" => array("whois.donuts.co","Domain not found"),
+			"army" => array("whois.unitedtld.com","Domain not found"),
+			"navy" => array("whois.unitedtld.com","Domain not found"),
+			"airforce" => array("whois.unitedtld.com","Domain not found"),
+			"vet" => array("whois.unitedtld.com","Domain not found"),
+			"za" => array("whois.co.za","Available")
 		);
 
 	
@@ -428,7 +454,8 @@ class DomainAvailability {
 			} else {
 				// TODO: REFACTOR THIS
 				// TLD is not in the whois array, die
-				throw new Exception("WHOIS server not found for that TLD");
+				//throw new Exception("WHOIS server not found for that TLD");
+				return '2';
 			}
 
 			$status = $this->checkDomainNameAvailabilty($domain,$whois_server,$bad_string);
@@ -480,9 +507,9 @@ class DomainAvailability {
  
     // Check the Whois server response
     if (strpos($response, $find_text))
-	return true;
+	return '1';
     else
-    return false;
+    return '0';
 	}
 }
 

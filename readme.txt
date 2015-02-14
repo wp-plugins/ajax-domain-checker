@@ -4,7 +4,7 @@ Donate link: http://asdqwe.net/
 Tags: wordpress domain checker, wordpress domain names, domain checker, domain availability, ajax domain checker
 Requires at least: 4.1
 Tested up to: 4.1
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +69,9 @@ also, you can custom button text and width size with:
 3. Wordpress Domain Checker from Dashboard Admin.
 
 == Changelog ==
+
+= 1.1 =
+Fix minor bugs
 
 = 1.0 =
 * Initial version
