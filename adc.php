@@ -4,7 +4,7 @@
 	Plugin URI: http://asdqwe.net/
 	Description: Check domain name availability for all Top Level Domains using shortcode or widget with Ajax search.
 	Author: Asdqwe Dev
-	Version: 1.0
+	Version: 1.1
 	Author URI: http://asdqwe.net/plugins/wp-domain-checker/
 	Text Domain: wdc
  */
