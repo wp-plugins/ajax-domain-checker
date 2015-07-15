@@ -159,7 +159,7 @@ class wdc_widget extends WP_Widget {
 	      echo $args['before_title'] . $title. $args['after_title'];
 	   	}
 			
-		do_shortcode("[wpdomainchecker width='$width' button='$button']");
+		echo do_shortcode("[wpdomainchecker width='$width' button='$button']");
 
 	  	echo $args['after_widget'];
 		}
